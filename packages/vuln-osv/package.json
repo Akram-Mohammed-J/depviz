@@ -1,0 +1,29 @@
+{
+  "name": "@depviz/vuln-osv",
+  "version": "0.1.0",
+  "description": "Batched vulnerability lookups against the OSV.dev API for dependency-graph-visualizer",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akram-Mohammed-J/depviz.git",
+    "directory": "packages/vuln-osv"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@depviz/core": "0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

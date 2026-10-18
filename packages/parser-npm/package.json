@@ -1,0 +1,29 @@
+{
+  "name": "@depviz/parser-npm",
+  "version": "0.1.0",
+  "description": "Parses npm lockfiles (package-lock.json v2/v3) into a dependency-graph-visualizer graph",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akram-Mohammed-J/depviz.git",
+    "directory": "packages/parser-npm"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@depviz/core": "0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
