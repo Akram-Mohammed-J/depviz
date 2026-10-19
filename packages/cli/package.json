@@ -1,6 +1,6 @@
 {
   "name": "@depviz/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for tracing which direct dependency introduced a vulnerable npm package",
   "type": "module",
   "bin": {
