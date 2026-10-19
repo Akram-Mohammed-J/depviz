@@ -14,15 +14,51 @@ Traces which direct (root) npm dependency introduced a vulnerable transitive pac
 - `packages/cli` — `depviz scan <dir>` and `depviz graph <dir> -o graph.json`
 - `packages/viz` — static HTML page (vis-network) that loads `graph.json`, highlights vulnerable nodes, and shows the introducing path(s) on click
 
-## Install
+## Use from npm
+
+Depviz reads an npm project's `package-lock.json` (lockfile version 2 or 3). Make sure the lockfile is present before running a command.
+
+Run it without a global install using `npx`:
 
 ```sh
-npm install -g @depviz/cli
-depviz scan ./my-project
-depviz why ./my-project lodash
+npx @depviz/cli scan ./my-project
 ```
 
-Or install just the parts you need as a library: `npm install @depviz/core @depviz/parser-npm @depviz/vuln-osv`.
+Or install the CLI globally and use the `depviz` command:
+
+```sh
+npm install --global @depviz/cli
+depviz scan ./my-project
+```
+
+### Commands
+
+Scan the lockfile for known vulnerabilities. Depviz queries the OSV.dev API, then prints each affected package and the direct dependency path(s) that introduced it:
+
+```sh
+depviz scan ./my-project
+```
+
+Look up the dependency path for a package reported by another security tool. This reads the lockfile locally and does not run a vulnerability scan:
+
+```sh
+depviz why ./my-project lodash
+depviz why ./my-project lodash@4.17.15
+```
+
+Export the full dependency graph, including vulnerability annotations, as JSON:
+
+```sh
+depviz graph ./my-project --out graph.json
+```
+
+`scan` exits with status 1 when it finds known vulnerabilities; `why` exits with status 1 when the package is not installed. A successful scan with no known vulnerabilities exits normally.
+
+To use the packages as libraries instead of the CLI:
+
+```sh
+npm install @depviz/core @depviz/parser-npm @depviz/vuln-osv
+```
 
 ## Development
 
